@@ -10,21 +10,20 @@ export async function load({ locals }) {
 export const actions = {
 	default: async ({ cookies, request }) => {
 		const data = await request.formData();
-
-		const body = await api.post('users/login', {
-			user: {
-				email: data.get('email'),
-				password: data.get('password')
-			}
-		});
+		let user = {
+			username:data.get('username'),
+			password: data.get('password')
+		};
+		console.log("starting");
+		const body = await api.post('users/login', user);
 
 		if (body.errors) {
 			return fail(401, body);
 		}
 
-		const value = btoa(JSON.stringify(body.user));
-		cookies.set('jwt', value, { path: '/' });
+		//const value = btoa(JSON.stringify(body.user));
+		//cookies.set('jwt', value, { path: '/' });
 
-		throw redirect(307, '/');
+		//throw redirect(307, '/');
 	}
 };

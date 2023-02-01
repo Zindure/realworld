@@ -25,10 +25,10 @@
 					<fieldset class="form-group">
 						<input
 							class="form-control form-control-lg"
-							name="email"
-							type="email"
+							name="username"
+							type="username"
 							required
-							placeholder="Email"
+							placeholder="Username"
 						/>
 					</fieldset>
 					<fieldset class="form-group">
